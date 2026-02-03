@@ -79,8 +79,11 @@ const maryButton = document.getElementById('play-mary');
 maryButton.addEventListener('click', () => {
   maryButton.classList.add('active');
   playSong(maryTune);
-  setTimeout(() => maryButton.classList.remove('active'), 300);
+
+  const totalDuration = maryTune.reduce((sum, note) => sum + note.duration, 0);
+  setTimeout(() => maryButton.classList.remove('active'), totalDuration);
 });
+
 
 // select all keys
 const keys = document.querySelectorAll('.key');
